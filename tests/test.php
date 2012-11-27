@@ -23,7 +23,7 @@ if (empty($_GET["oauth_token"]))
     $getAuthTokenParams = array('scope' => OAUTH_HOST, 'xoauth_displayname' => 'Oauth test');
 
     // get a request token
-    $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], 0, $getAuthTokenParams);
+    $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], 1, $getAuthTokenParams);
 
     print_r($tokenResultParams);
 }
