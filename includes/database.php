@@ -39,7 +39,7 @@ class Database {
      * @param $sql
      */
     public function Execute($sql) {
-
+        return $this->_connection->query($sql);
     }
 
 }
