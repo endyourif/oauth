@@ -33,4 +33,13 @@ class Database {
         mysqli_close($this->_connection);
     }
 
+    /**
+     * Run an sql command
+     *
+     * @param $sql
+     */
+    public function Execute($sql) {
+
+    }
+
 }

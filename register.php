@@ -20,22 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <legend>Register</legend>
 
         <div>
-            <label for="requester_name"></label>
+            <label for="requester_name">Name</label>
             <input type="text" id="requester_name" name="requester_name" value="" />
         </div>
 
         <div>
-            <label for="requester_email"></label>
+            <label for="requester_email">Email</label>
             <input type="text" id="requester_email" name="requester_email" value="" />
         </div>
 
         <div>
-            <label for="application_uri"></label>
+            <label for="application_uri">Url</label>
             <input type="text" id="application_uri" name="application_uri" value="" />
         </div>
 
         <div>
-            <label for="callback_uri"></label>
+            <label for="callback_uri">Callback Url</label>
             <input type="text" id="callback_uri" name="callback_uri" value="" />
         </div>
     </fieldset>
