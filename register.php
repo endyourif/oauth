@@ -4,14 +4,10 @@ require_once 'includes/oauth.php';
 
 // If we are POSTing, create a new consumer
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Check if the user with that email already exists
     $sql = "INSERT INTO `users` (`name`, `email`, `created`) VALUES('" . $_POST['requester_name'] . "', '" . $_POST['requester_email'] . "', NOW())";
-    $sql .= "ON DUPLICATE KEY UPDATE `name` = '" . $_POST['requester_name'] . "'";
     $res = $database->Execute($sql);
 
     $user_id = $database->GetConnection()->insert_id;
-
-    echo $user_id;
 
     $key   = $store->updateConsumer($_POST, $user_id, true);
 
