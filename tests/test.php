@@ -30,13 +30,13 @@ if (empty($_GET["oauth_token"])) {
     $tokenResultParams = $_GET;
 
     OAuthRequester::requestAccessToken($options['consumer_key'], $tokenResultParams['oauth_token'], $user_id, 'POST', $_GET);
-}
 
-/*$request = new OAuthRequester("", 'GET', $tokenResultParams);
-$result = $request->doRequest(0);
-if ($result['code'] == 200) {
-    var_dump($result['body']);
+    $request = new OAuthRequester(OAUTH_HOST . "/test_request.php", 'GET', $tokenResultParams);
+    $result = $request->doRequest(0);
+    if ($result['code'] == 200) {
+        var_dump($result['body']);
+    }
+    else {
+        echo 'Error';
+    }
 }
-else {
-    echo 'Error';
-}*/

@@ -1,4 +1,7 @@
 <?php
+// Include the oauth setup file
+require_once 'includes/oauth.php';
+
 if (OAuthRequestVerifier::requestIsSigned())
 {
     try
