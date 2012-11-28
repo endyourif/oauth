@@ -37,6 +37,8 @@ if (isset($user_id)) {
         $server->authorizeFinish($authorized, $user_id);
     }
 
+    print_r($rs);
+    exit;
     // redirect them back to the callback_url with the token
     Header("Location: " . urldecode($rs['callback_url']) . "?token={$rs['token']}&oauth_token={$_GET['oauth_token']}");
     exit;
