@@ -43,9 +43,8 @@ if (isset($user_id)) {
 
 // otherwise, display login form
 ?>
-<form action="http://<?php echo $_SERVER['SERVER_NAME'];?>/login.php" method="post">
+<form action="http://<?php echo $_SERVER['SERVER_NAME'];?>/login.php?oauth_token=<?php echo $_GET['oauth_token'];?>" method="post">
     <input type="hidden" name="allow" value="1" />
-    <input type="hidden" name="oauth_token" value="<?php echo $_POST['oauth_token'];?>" />
 
     <fieldset>
         <legend>Login</legend>
