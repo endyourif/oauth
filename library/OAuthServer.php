@@ -184,7 +184,8 @@ class OAuthServer extends OAuthRequestVerifier
 		{
 			$this->session->set('verify_oauth_token', $rs['token']);
 			$this->session->set('verify_oauth_consumer_key', $rs['consumer_key']);
-			$cb = $this->getParam('oauth_callback', true); 
+			$cb = $this->getParam('oauth_callback', true);
+            echo "cb = " . $cb;
 			if ($cb)
 				$this->session->set('verify_oauth_callback', $cb);
 			else

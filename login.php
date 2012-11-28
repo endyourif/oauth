@@ -14,8 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && array_key_exists('requester_email', 
 }
 
 if (isset($user_id)) {
-    echo $user_id;
-
     // Check if there is a valid request token in the current request
     // Returns an array with the consumer key, consumer secret, token, token secret and token type.
     $rs = $server->authorizeVerify();
