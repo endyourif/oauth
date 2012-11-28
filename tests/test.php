@@ -11,34 +11,25 @@ $options = array(
     'access_token_uri' => OAUTH_HOST . '/access_token.php'
 );
 
-$ch = curl_init();
-
-// set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, $options['request_token_uri']);
-curl_setopt($ch, CURLOPT_FRESH_CONNECT, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('oauth_consumer_key' => $options['consumer_key'], 'oauth_timestamp' => time())));
-
-/*if(!$result = curl_exec($ch)) {
-    trigger_error(curl_error($ch));
-}*/
-curl_close($ch);
-
-//print_r($result);
-
 include_once "../library/OAuthStore.php";
 include_once "../library/OAuthRequester.php";
 
 OAuthStore::instance("Session", $options);
 
-// get a request token
-$tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], 1);
+if (empty($_GET["oauth_token"])) {
+    // get a request token
+    $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], 1);
 
-print_r($tokenResultParams);
+    Header("Location: {$options['authorize_uri']}?oauth_token={$tokenResultParams['token']}");
+} else {
+    //  STEP 2:  Get an access token
+    $oauthToken = $_GET["oauth_token"];
 
-OAuthRequester::requestAccessToken(CONSUMER_KEY, $tokenResultParams['token'], 1, 'POST', $_GET);
+    // echo "oauth_verifier = '" . $oauthVerifier . "'<br/>";
+    $tokenResultParams = $_GET;
+
+    OAuthRequester::requestAccessToken($options['consumer_key'], $tokenResultParams['token'], 1, 'POST', $_GET);
+}
 
 /*$request = new OAuthRequester("", 'GET', $tokenResultParams);
 $result = $request->doRequest(0);

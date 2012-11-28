@@ -1,4 +1,7 @@
 <?php
+// Include the oauth setup file
+require_once 'includes/oauth.php';
+
 // check if we are posting
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && array_key_exists('requester_email', $_POST)) {
     // check if the email exists in our users table
