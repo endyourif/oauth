@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && array_key_exists('requester_email', 
         $row = $res->fetch_assoc();
         $user_id = $row['id'];
         // store in session
-        $_SESSION['user_id'];
+        $_SESSION['user_id'] = $user_id;
     }
 }
 

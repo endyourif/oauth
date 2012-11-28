@@ -1,10 +1,11 @@
 <?php
 define("OAUTH_HOST", "http://oauth.endyourif.com");
 
+$user_id = 1;
 //  Init the OAuthStore
 $options = array(
-    'consumer_key' => '91b962e21bd0c369154ba3eddc066a58050b64efd',
-    'consumer_secret' => 'ac11ea9860363978615c9ad0e950d89a',
+    'consumer_key' => '1c0dbb96c1cfc198ea58c82d7974a248050b65871',
+    'consumer_secret' => '8f14da56bbbb46ac9c507e587318222e',
     'server_uri' => OAUTH_HOST,
     'request_token_uri' => OAUTH_HOST . '/request_token.php',
     'authorize_uri' => OAUTH_HOST . '/login.php',
@@ -18,7 +19,7 @@ OAuthStore::instance("Session", $options);
 
 if (empty($_GET["oauth_token"])) {
     // get a request token
-    $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], 1);
+    $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], $user_id);
 
     Header("Location: {$options['authorize_uri']}?oauth_token={$tokenResultParams['token']}");
 } else {
@@ -28,7 +29,7 @@ if (empty($_GET["oauth_token"])) {
     // echo "oauth_verifier = '" . $oauthVerifier . "'<br/>";
     $tokenResultParams = $_GET;
 
-    OAuthRequester::requestAccessToken($options['consumer_key'], $tokenResultParams['token'], 1, 'POST', $_GET);
+    OAuthRequester::requestAccessToken($options['consumer_key'], $tokenResultParams['token'], $user_id, 'POST', $_GET);
 }
 
 /*$request = new OAuthRequester("", 'GET', $tokenResultParams);
