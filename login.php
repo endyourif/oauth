@@ -27,12 +27,6 @@ if (isset($user_id)) {
         // When there was a oauth_callback then this will redirect to the consumer
         $server->authorizeFinish($authorized, $user_id);
     }
-
-    print_r($rs);
-    exit;
-    // redirect them back to the callback_url with the token
-    Header("Location: " . urldecode($rs['callback_url']) . "?token={$rs['token']}&oauth_token={$_GET['oauth_token']}");
-    exit;
 }
 
 // otherwise, display login form
