@@ -1,5 +1,6 @@
 <?php
 session_start();
+print_r($_SESSION);
 
 // Create constants for database connection
 define('DB_TYPE', 'MySQLi');
