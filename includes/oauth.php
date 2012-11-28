@@ -1,6 +1,6 @@
 <?php
 // Add a header indicating this is an OAuth server
-header('X-XRDS-Location: http://' . $_SERVER['SERVER_NAME'] . '/services.php.xrds');
+header('X-XRDS-Location: http://' . $_SERVER['SERVER_NAME'] . '/services.xrds.php');
 
 // Include the OAuth library code
 require_once 'library/OAuthServer.php';
