@@ -29,7 +29,7 @@ if (empty($_GET["oauth_token"])) {
     // echo "oauth_verifier = '" . $oauthVerifier . "'<br/>";
     $tokenResultParams = $_GET;
 
-    OAuthRequester::requestAccessToken($options['consumer_key'], $tokenResultParams['token'], $user_id, 'POST', $_GET);
+    OAuthRequester::requestAccessToken($options['consumer_key'], $tokenResultParams['oauth_token'], $user_id, 'POST', $_GET);
 }
 
 /*$request = new OAuthRequester("", 'GET', $tokenResultParams);
