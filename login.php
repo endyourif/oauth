@@ -38,7 +38,7 @@ if (isset($user_id)) {
     }
 
     // redirect them back to the callback_url with the token
-    Header("Location: {$rs['callback_url']}?token={$rs['token']}&oauth_token={$_GET['oauth_token']}");
+    Header("Location: http://{$rs['callback_url']}?token={$rs['token']}&oauth_token={$_GET['oauth_token']}");
     exit;
 }
 

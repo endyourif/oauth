@@ -21,7 +21,7 @@ if (empty($_GET["oauth_token"])) {
     // get a request token
     $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], $user_id);
 
-    Header("Location: {$options['authorize_uri']}?oauth_token={$tokenResultParams['token']}");
+    Header("Location: {$options['authorize_uri']}?oauth_token={$tokenResultParams['token']}&oauth_callback={$_SERVER['SERVER_NAME']}/tests/test.php");
 } else {
     //  STEP 2:  Get an access token
     $oauthToken = $_GET["oauth_token"];
