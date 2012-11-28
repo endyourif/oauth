@@ -10,14 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && array_key_exists('requester_email', 
     if ($res) {
         $row = $res->fetch_assoc();
         $user_id = $row['id'];
-        // store in session
-        $_SESSION['user_id'] = $user_id;
     }
-}
-
-// check if the user is logged in
-if (array_key_exists('user_id', $_SESSION)) {
-    $user_id = $_SESSION['user_id'];
 }
 
 if (isset($user_id)) {
