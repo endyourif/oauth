@@ -179,9 +179,9 @@ class OAuthServer extends OAuthRequestVerifier
 
 		// We need to remember the callback
 		$verify_oauth_token = $this->session->get('verify_oauth_token');		
-		if (	empty($verify_oauth_token)
-			||	strcmp($verify_oauth_token, $rs['token']))
-		{
+		//if (	empty($verify_oauth_token)
+		//	||	strcmp($verify_oauth_token, $rs['token']))
+		//{
 			$this->session->set('verify_oauth_token', $rs['token']);
 			$this->session->set('verify_oauth_consumer_key', $rs['consumer_key']);
 			$cb = $this->getParam('oauth_callback', true);
@@ -190,7 +190,7 @@ class OAuthServer extends OAuthRequestVerifier
 				$this->session->set('verify_oauth_callback', $cb);
 			else
 				$this->session->set('verify_oauth_callback', $rs['callback_url']);
-		}
+		//}
 		OAuthRequestLogger::flush();
 		return $rs;
 	}
