@@ -37,7 +37,7 @@ if (isset($user_id)) {
 
 // otherwise, display login form
 ?>
-<form action="http://<?php echo $_SERVER['SERVER_NAME'];?>/login.php?oauth_token=<?php echo $_GET['oauth_token'];?>" method="post">
+<form action="http://<?php echo $_SERVER['SERVER_NAME'];?>/login.php?oauth_token=<?php echo $_GET['oauth_token'];?>&oauth_callback=<?php echo $_GET['oauth_callback'];?>" method="post">
     <input type="hidden" name="allow" value="1" />
 
     <fieldset>
