@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && array_key_exists('requester_email', 
 // check if the user is logged in
 if (array_key_exists('user_id', $_SESSION)) {
     $user_id = $_SESSION['user_id'];
+}
+
+if (isset($user_id)) {
+    echo $user_id;
 
     // Check if there is a valid request token in the current request
     // Returns an array with the consumer key, consumer secret, token, token secret and token type.
