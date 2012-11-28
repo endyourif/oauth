@@ -1,7 +1,4 @@
 <?php
-require_once "../library/OAuthStore.php";
-require_once "../library/OAuthRequester.php";
-
 define("OAUTH_HOST", "http://oauth.endyourif.com");
 
 //  Init the OAuthStore
@@ -13,17 +10,16 @@ $options = array(
     'authorize_uri' => OAUTH_HOST,
     'access_token_uri' => OAUTH_HOST
 );
-// Note: do not use "Session" storage in production. Prefer a database
-// storage, such as MySQL.
-OAuthStore::instance("Session", $options);
 
-//  STEP 1:  If we do not have an OAuth token yet, go get one
-if (empty($_GET["oauth_token"]))
-{
-    $getAuthTokenParams = array('scope' => OAUTH_HOST, 'xoauth_displayname' => 'Oauth test');
+$ch = curl_init();
 
-    // get a request token
-    $tokenResultParams = OAuthRequester::requestRequestToken($options['consumer_key'], 1, $getAuthTokenParams);
+// set URL and other appropriate options
+curl_setopt($ch, CURLOPT_URL, $options['request_token_uri']);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, array('oauth_consumer_key' => $options['consumer_key']));
 
-    print_r($tokenResultParams);
-}
+$results = curl_exec($ch);
+
+curl_close($ch);
+
+print_r($results);
