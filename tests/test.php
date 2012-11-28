@@ -18,8 +18,5 @@ curl_setopt($ch, CURLOPT_URL, $options['request_token_uri']);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, array('oauth_consumer_key' => $options['consumer_key']));
 
-$results = curl_exec($ch);
-
+curl_exec($ch);
 curl_close($ch);
-
-print_r($results);
